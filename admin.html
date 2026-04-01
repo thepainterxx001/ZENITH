@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ZENITH</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="showSection('create-accounts')">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Create Accounts</span>
+                </div>
+                <div class="nav-item dropdown" onclick="toggleDropdown()">
+                    <i class="fas fa-users"></i>
+                    <span>Manage Accounts</span>
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </div>
+                <div class="dropdown-content" id="manageDropdown">
+                    <div class="dropdown-item" onclick="showSection('teacher-accounts')">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teacher Accounts</span>
+                    </div>
+                    <div class="dropdown-item" onclick="showSection('student-accounts')">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Student Accounts</span>
+                    </div>
+                </div>
+                <div class="nav-item" onclick="showSection('manage-schedules')">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Manage Schedules</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Create Accounts Section -->
+            <section id="create-accounts" class="content-section active">
+                <div class="section-header">
+                    <h2>Create Account</h2>
+                </div>
+                <div class="create-account-form">
+                    <div class="form-container">
+                        <h3>Create Account</h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" id="firstName" name="firstName" placeholder="Enter first name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" id="lastName" name="lastName" placeholder="Enter last name">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" id="age" name="age" placeholder="Enter age">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" placeholder="Enter password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select id="role" name="role">
+                                        <option value="">Select Role</option>
+                                        <option value="teacher">Teacher</option>
+                                        <option value="student">Student</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" class="create-user-btn">Create User</button>
+                        </form>
+                    </div>
+                    <div class="recent-accounts">
+                        <h3>Recent Accounts</h3>
+                        <div class="recent-accounts-placeholder">
+                            <p>Recently created accounts will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Teacher Accounts Section -->
+            <section id="teacher-accounts" class="content-section">
+                <div class="section-header">
+                    <h2>Manage Accounts - Teacher Section</h2>
+                </div>
+                <div class="accounts-management">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search teachers..." class="search-input">
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0001</td>
+                                    <td>Sung Jin Woo</td>
+                                    <td>21</td>
+                                    <td>solo@gmail.com</td>
+                                    <td>Teacher</td>
+                                    <td>
+                                        <select>
+                                            <option value="IT" selected>IT</option>
+                                            <option value="CS">CS</option>
+                                            <option value="SE">SE</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-trash delete-btn"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>0002</td>
+                                    <td>Doc Marcus</td>
+                                    <td>35</td>
+                                    <td>sbemerald@gmail.com</td>
+                                    <td>Teacher</td>
+                                    <td>
+                                        <select>
+                                            <option value="IT" selected>IT</option>
+                                            <option value="CS">CS</option>
+                                            <option value="SE">SE</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-trash delete-btn"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="save-btn">Save</button>
+                        <button class="cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Accounts Section -->
+            <section id="student-accounts" class="content-section">
+                <div class="section-header">
+                    <h2>Manage Accounts - Student Section</h2>
+                </div>
+                <div class="accounts-management">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search students..." class="search-input">
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1001</td>
+                                    <td>John Doe</td>
+                                    <td>20</td>
+                                    <td>john.doe@gmail.com</td>
+                                    <td>Student</td>
+                                    <td>
+                                        <select>
+                                            <option value="IT">IT</option>
+                                            <option value="CS" selected>CS</option>
+                                            <option value="SE">SE</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-trash delete-btn"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1002</td>
+                                    <td>Jane Smith</td>
+                                    <td>22</td>
+                                    <td>jane.smith@gmail.com</td>
+                                    <td>Student</td>
+                                    <td>
+                                        <select>
+                                            <option value="IT">IT</option>
+                                            <option value="CS">CS</option>
+                                            <option value="SE" selected>SE</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-trash delete-btn"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="save-btn">Save</button>
+                        <button class="cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manage Schedules Section -->
+            <section id="manage-schedules" class="content-section">
+                <div class="section-header">
+                    <h2>Manage Schedules</h2>
+                </div>
+                <div class="accounts-management">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search schedules..." class="search-input">
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Teacher ID</th>
+                                    <th>Teacher Name</th>
+                                    <th>Day</th>
+                                    <th>Subject</th>
+                                    <th>Time</th>
+                                    <th>Room</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0001</td>
+                                    <td>Sung Jin Woo</td>
+                                    <td>
+                                        <select>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                            <option value="Saturday">Saturday</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option value="Web Development">Web Development</option>
+                                            <option value="Data Structures">Data Structures</option>
+                                            <option value="Software Engineering">Software Engineering</option>
+                                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                            <option value="Database Systems">Database Systems</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="time-input-group">
+                                            <input type="time" value="09:00">
+                                            <span>to</span>
+                                            <input type="time" value="12:00">
+                                        </div>
+                                    </td>
+                                    <td>Lab 101</td>
+                                    <td>
+                                        <i class="fas fa-trash delete-btn"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>0002</td>
+                                    <td>Doc Marcus</td>
+                                    <td>
+                                        <select>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday" selected>Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                            <option value="Saturday">Saturday</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option value="Web Development">Web Development</option>
+                                            <option value="Data Structures" selected>Data Structures</option>
+                                            <option value="Software Engineering">Software Engineering</option>
+                                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                            <option value="Database Systems">Database Systems</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="time-input-group">
+                                            <input type="time" value="13:00">
+                                            <span>to</span>
+                                            <input type="time" value="16:00">
+                                        </div>
+                                    </td>
+                                    <td>Room 302</td>
+                                    <td>
+                                        <i class="fas fa-trash delete-btn"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="save-btn">Save Schedule</button>
+                        <button class="cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
