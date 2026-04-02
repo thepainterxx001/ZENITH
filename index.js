@@ -1,5 +1,8 @@
 // Show/hide sections based on navigation
 function showSection(sectionId) {
+    // Save current section to localStorage
+    localStorage.setItem('activeSection', sectionId);
+    
     // Hide all sections
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(section => {
@@ -18,25 +21,37 @@ function showSection(sectionId) {
 
 // Update active navigation item
 function updateActiveNavItem(sectionId) {
-    // Remove active class from all nav items
+    // Remove active class from all nav items and dropdown items
     const navItems = document.querySelectorAll('.nav-item');
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    
     navItems.forEach(item => {
         item.classList.remove('active');
     });
     
-    // Add active class to the clicked nav item
+    dropdownItems.forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to the clicked nav item or dropdown item
     let activeItem;
     switch(sectionId) {
         case 'create-accounts':
             activeItem = document.querySelector('.nav-item:nth-child(1)');
             break;
         case 'teacher-accounts':
+            activeItem = document.querySelector('.dropdown-item:nth-child(1)');
+            // Also highlight parent dropdown
+            document.querySelector('.nav-item.dropdown').classList.add('active');
+            break;
         case 'student-accounts':
-            // Keep the Manage Accounts dropdown active
-            activeItem = document.querySelector('.nav-item.dropdown');
+            activeItem = document.querySelector('.dropdown-item:nth-child(2)');
+            // Also highlight parent dropdown
+            document.querySelector('.nav-item.dropdown').classList.add('active');
             break;
         case 'manage-schedules':
-            activeItem = document.querySelector('.nav-item:nth-child(3)');
+            // Use querySelector with icon class to be more specific since structure changed
+            activeItem = document.querySelector('.nav-item i.fa-calendar-alt').parentElement;
             break;
     }
     
@@ -50,13 +65,18 @@ function toggleDropdown() {
     const dropdown = document.querySelector('.dropdown');
     const dropdownContent = document.getElementById('manageDropdown');
     
-    dropdown.classList.toggle('active');
-    dropdownContent.classList.toggle('show');
+    // Don't close if already open - this allows clicking to toggle without closing
+    if (dropdownContent.classList.contains('show')) {
+        // Keep it open and just update nav state
+        updateActiveNavItem('teacher-accounts');
+        return;
+    }
+    
+    dropdown.classList.add('active');
+    dropdownContent.classList.add('show');
     
     // Update active nav item for dropdown
-    if (dropdownContent.classList.contains('show')) {
-        updateActiveNavItem('teacher-accounts'); // Use any child section
-    }
+    updateActiveNavItem('teacher-accounts'); // Use any child section
 }
 
 // Close dropdown when clicking outside
@@ -64,7 +84,8 @@ document.addEventListener('click', function(event) {
     const dropdown = document.querySelector('.dropdown');
     const dropdownContent = document.getElementById('manageDropdown');
     
-    if (!dropdown.contains(event.target)) {
+    // Don't close if clicking inside the dropdown or on dropdown items
+    if (!dropdown.contains(event.target) && !dropdownContent.contains(event.target)) {
         dropdown.classList.remove('active');
         dropdownContent.classList.remove('show');
     }
@@ -157,6 +178,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Load persisted section
+    const savedSection = localStorage.getItem('activeSection');
+    if (savedSection) {
+        showSection(savedSection);
+        
+        // If it was a sub-section of manage accounts, open the dropdown
+        if (savedSection === 'teacher-accounts' || savedSection === 'student-accounts') {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.getElementById('manageDropdown');
+            if (dropdown && dropdownContent) {
+                dropdown.classList.add('active');
+                dropdownContent.classList.add('show');
+            }
+        }
+    } else {
+        // Default to create-accounts if no saved section
+        showSection('create-accounts');
+    }
 });
 
 // Show notification (simple implementation)

@@ -166,6 +166,12 @@ body {
     right: 18px;
     color: rgba(87, 82, 82, 0.7);
     font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.search-bar i:hover {
+    color: rgba(100, 102, 239, 1);
 }
 
 .header-icons {
@@ -280,6 +286,12 @@ body {
 .dropdown-item i {
     width: 18px;
     text-align: center;
+}
+
+.dropdown-item.active {
+    background-color: rgba(100, 102, 239, 0.2);
+    color: #ffffff;
+    border-left: 3px solid rgba(100, 102, 239, 1);
 }
 
 .logout {
