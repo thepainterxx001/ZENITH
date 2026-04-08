@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error — SecureApp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="page-error">
+  <div class="error-inner">
+    <div class="error-code" id="error-code">403</div>
+    <h1 class="error-title" id="error-title">Forbidden</h1>
+    <p class="error-msg" id="error-msg">You do not have permission to access this page.</p>
+    <a href="/pages/login.html" class="btn-back">← Back to Login</a>
+  </div>
+</div>
+
+<script>
+  // Read optional query params: /pages/error.html?code=404&title=Not+Found&msg=...
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('code'))  document.getElementById('error-code').textContent  = params.get('code');
+  if (params.get('title')) document.getElementById('error-title').textContent = params.get('title');
+  if (params.get('msg'))   document.getElementById('error-msg').textContent   = params.get('msg');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGIN — ZENITH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="page-login">
+  <div class="login-split">
+
+    <div class="brand-panel">
+      <div class="brand-inner">
+        <div class="brand-logo">
+          <span class="logo-icon">⬡</span>
+          <span class="logo-text">ZENITH</span>
+        </div>
+        <h1 class="brand-headline">Reach your <br/>academic <br/><em>peak.</em></h1>
+        <p class="brand-sub">A modern workspace designed to help students and educators thrive together.</p>
+        <div class="brand-badges">
+          <span class="badge">Student Dasboard</span>
+          <span class="badge">Faculty Access</span>
+          <span class="badge">Smart Study Partner</span>
+        </div>
+      </div>
+      <div class="brand-bg-shape"></div>
+    </div>
+
+    <div class="form-panel">
+      <div class="form-inner">
+        <p class="form-eyebrow">Welcome back</p>
+        <h2 class="form-title">Sign in</h2>
+
+        <div class="alert alert-error" id="error-box" style="display:none;" role="alert">
+          <span class="alert-icon">⚠</span>
+          <span id="error-msg"></span>
+        </div>
+
+        <form id="loginForm" novalidate autocomplete="off">
+          <div class="field">
+            <label for="email">Email</label>
+            <div class="input-wrap">
+              <span class="input-icon">◈</span>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label-row">
+                <label for="password">Password</label>
+                <a href="#" class="forgot-pw-link">Forgot Password?</a>
+            </div>
+            <div class="input-wrap">
+              <span class="input-icon">◉</span>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+                autocomplete="current-password"
+              />
+              
+              <label class="toggle-pw" aria-label="Toggle password visibility">
+                <input type="checkbox" id="showPassword" style="opacity: 0; position: absolute; width: 0; height: 0;">
+                <span id="pw-eye">👁</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="btn-submit" id="loginBtn">
+            <span>Sign in</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+
+        <p class="form-hint">
+          A secure, unified portal for students and educators.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/js/login.js"></script>
+</body>
+</html>
