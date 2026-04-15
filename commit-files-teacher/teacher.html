@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - ZENITH</title>
+    <link rel="stylesheet" href="teacher.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="showSection('student-lessons')">
+                    <i class="fas fa-book"></i>
+                    <span>Student Lessons</span>
+                </div>
+                <div class="nav-item" onclick="showSection('student-assignments')">
+                    <i class="fas fa-tasks"></i>
+                    <span>Student Assignments</span>
+                </div>
+                <div class="nav-item" onclick="showSection('student-quizzes')">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Student Quizzes</span>
+                </div>
+                <div class="nav-item" onclick="showSection('submissions')">
+                    <i class="fas fa-file-upload"></i>
+                    <span>Submissions</span>
+                </div>
+                <div class="nav-item" onclick="showSection('grades')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Student Grades</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Student Lessons Section -->
+            <section id="student-lessons" class="content-section active">
+                <div class="section-header">
+                    <h2>Student Lessons</h2>
+                </div>
+                
+                <div class="lessons-container">
+                    <!-- Lessons Content -->
+                    <div class="lessons-content">
+                        <div class="lessons-header">
+                            <h3>Lesson Materials</h3>
+                            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                                <i class="fas fa-upload"></i>
+                                Upload Files
+                            </button>
+                            <input type="file" id="fileInput" accept=".pdf,.ppt,.pptx" multiple style="display: none;">
+                        </div>
+                        
+                        <!-- Subject Selection -->
+                        <div class="subject-selection-top">
+                            <label for="subjectSelect">Select Subject:</label>
+                            <select id="subjectSelect" class="subject-dropdown">
+                                <option value="">Select Subject</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Database Design">Database Design</option>
+                                <option value="Mobile App Development">Mobile App Development</option>
+                                <option value="Data Structures">Data Structures</option>
+                                <option value="Algorithms">Algorithms</option>
+                                <option value="Computer Networks">Computer Networks</option>
+                                <option value="Operating Systems">Operating Systems</option>
+                                <option value="Software Engineering">Software Engineering</option>
+                                <option value="Machine Learning">Machine Learning</option>
+                                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                            </select>
+                        </div>
+                        
+                        <!-- File Upload Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h4>Drag & Drop your lesson files here</h4>
+                                <p>or click to browse</p>
+                                <span class="file-types">Supported formats: PDF, PPT, PPTX</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Uploaded Files List -->
+                        <div class="files-list" id="filesList">
+                            <h4>Uploaded Files</h4>
+                            <div class="file-item">
+                                <div class="file-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="file-info">
+                                    <span class="file-name">Introduction to Web Development.pdf</span>
+                                    <span class="file-size">2.4 MB</span>
+                                    <span class="file-subject">Subject: Web Development</span>
+                                    <span class="upload-date">Uploaded: April 12, 2026</span>
+                                </div>
+                                <div class="file-actions">
+                                    <button class="btn-download" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="file-item">
+                                <div class="file-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="file-info">
+                                    <span class="file-name">Database Design Basics.pptx</span>
+                                    <span class="file-size">1.8 MB</span>
+                                    <span class="file-subject">Subject: Database Design</span>
+                                    <span class="upload-date">Uploaded: April 10, 2026</span>
+                                </div>
+                                <div class="file-actions">
+                                    <button class="btn-download" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="file-item">
+                                <div class="file-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="file-info">
+                                    <span class="file-name">Mobile App Development.pdf</span>
+                                    <span class="file-size">3.1 MB</span>
+                                    <span class="file-subject">Subject: Mobile App Development</span>
+                                    <span class="upload-date">Uploaded: April 8, 2026</span>
+                                </div>
+                                <div class="file-actions">
+                                    <button class="btn-download" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Schedule Section -->
+                    <div class="schedule-section">
+                        <div class="schedule-header">
+                            <h3>Teaching Schedule</h3>
+                            <div class="schedule-controls">
+                                <button class="btn-prev"><i class="fas fa-chevron-left"></i></button>
+                                <span class="current-month">April 2026</span>
+                                <button class="btn-next"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-container">
+                            <div class="calendar-grid">
+                                <!-- Calendar Header -->
+                                <div class="calendar-header">
+                                    <div class="calendar-day-header">Sun</div>
+                                    <div class="calendar-day-header">Mon</div>
+                                    <div class="calendar-day-header">Tue</div>
+                                    <div class="calendar-day-header">Wed</div>
+                                    <div class="calendar-day-header">Thu</div>
+                                    <div class="calendar-day-header">Fri</div>
+                                    <div class="calendar-day-header">Sat</div>
+                                </div>
+                                
+                                <!-- Calendar Days (will be populated by JavaScript) -->
+                                <div class="calendar-body" id="calendarBody">
+                                    <!-- Days will be generated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-list">
+                            <h4>Today's Classes</h4>
+                            <div class="schedule-item">
+                                <div class="schedule-time">09:00 - 10:30</div>
+                                <div class="schedule-details">
+                                    <span class="schedule-subject">Web Development</span>
+                                    <span class="schedule-room">Room 301</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">14:00 - 15:30</div>
+                                <div class="schedule-details">
+                                    <span class="schedule-subject">Database Design</span>
+                                    <span class="schedule-room">Lab 205</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Assignments Section -->
+            <section id="student-assignments" class="content-section">
+                <div class="section-header">
+                    <h2>Student Assignments</h2>
+                </div>
+                
+                <div class="assignments-container">
+                    <!-- Assignments Content -->
+                    <div class="assignments-content">
+                        <div class="assignments-header">
+                            <h3>Active Assignments</h3>
+                            <button class="add-assignment-btn" onclick="window.location.href = 'create-assignment.html'">
+                                <i class="fas fa-plus"></i>
+                                Create Assignment
+                            </button>
+                        </div>
+                        
+                        <div class="assignments-grid">
+                            <div class="assignment-card">
+                                <div class="assignment-icon">
+                                    <i class="fas fa-file-code"></i>
+                                </div>
+                                <div class="assignment-info">
+                                    <h4>HTML/CSS Portfolio</h4>
+                                    <p>Create a personal portfolio website</p>
+                                    <div class="assignment-meta">
+                                        <span class="assignment-due">Due: April 20, 2026</span>
+                                        <span class="assignment-submissions">12 submissions</span>
+                                    </div>
+                                </div>
+                                <div class="assignment-actions">
+                                    <button class="btn-edit" onclick="window.location.href = 'edit-assignment.html'">Edit</button>
+                                </div>
+                            </div>
+                            
+                            <div class="assignment-card">
+                                <div class="assignment-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="assignment-info">
+                                    <h4>Database Schema Design</h4>
+                                    <p>Design a database for e-commerce</p>
+                                    <div class="assignment-meta">
+                                        <span class="assignment-due">Due: April 25, 2026</span>
+                                        <span class="assignment-submissions">8 submissions</span>
+                                    </div>
+                                </div>
+                                <div class="assignment-actions">
+                                    <button class="btn-edit" onclick="window.location.href = 'edit-assignment.html'">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Submissions Section -->
+                    <div class="recent-submissions-section">
+                        <div class="submissions-header">
+                            <h3>Recent Submissions</h3>
+                            <button class="view-all-btn">View All</button>
+                        </div>
+                        
+                        <div class="submissions-list">
+                            <div class="submission-item">
+                                <div class="submission-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="submission-info">
+                                    <span class="student-name">John Doe</span>
+                                    <span class="assignment-name">HTML/CSS Portfolio</span>
+                                    <span class="submission-time">2 hours ago</span>
+                                </div>
+                                <div class="submission-status">
+                                    <span class="status-badge pending">Pending Review</span>
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <div class="submission-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="submission-info">
+                                    <span class="student-name">Jane Smith</span>
+                                    <span class="assignment-name">Database Schema Design</span>
+                                    <span class="submission-time">5 hours ago</span>
+                                </div>
+                                <div class="submission-status">
+                                    <span class="status-badge graded">Graded</span>
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <div class="submission-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="submission-info">
+                                    <span class="student-name">Mike Johnson</span>
+                                    <span class="assignment-name">HTML/CSS Portfolio</span>
+                                    <span class="submission-time">1 day ago</span>
+                                </div>
+                                <div class="submission-status">
+                                    <span class="status-badge pending">Pending Review</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Quizzes Section -->
+            <section id="student-quizzes" class="content-section">
+                <div class="section-header">
+                    <h2>Student Quizzes</h2>
+                </div>
+                
+                <div class="quizzes-container">
+                    <!-- Quizzes Content -->
+                    <div class="quizzes-content">
+                        <div class="quizzes-header">
+                            <h3>Active Quizzes</h3>
+                            <button class="add-quiz-btn" onclick="window.location.href = 'create-quiz.html'">
+                                <i class="fas fa-plus"></i>
+                                Create Quiz
+                            </button>
+                        </div>
+                        
+                        <div class="quizzes-grid">
+                            <div class="quiz-card">
+                                <div class="quiz-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="quiz-info">
+                                    <h4>HTML Fundamentals</h4>
+                                    <p>Basic HTML tags and structure</p>
+                                    <div class="quiz-meta">
+                                        <span class="quiz-questions">20 questions</span>
+                                        <span class="quiz-duration">30 minutes</span>
+                                        <span class="quiz-attempts">45 attempts</span>
+                                    </div>
+                                </div>
+                                <div class="quiz-actions">
+                                    <button class="btn-edit" onclick="window.location.href = 'edit-quiz.html'">Edit</button>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-card">
+                                <div class="quiz-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="quiz-info">
+                                    <h4>SQL Basics</h4>
+                                    <p>Database queries and operations</p>
+                                    <div class="quiz-meta">
+                                        <span class="quiz-questions">15 questions</span>
+                                        <span class="quiz-duration">25 minutes</span>
+                                        <span class="quiz-attempts">38 attempts</span>
+                                    </div>
+                                </div>
+                                <div class="quiz-actions">
+                                    <button class="btn-edit" onclick="window.location.href = 'edit-quiz.html'">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Submissions Section -->
+                    <div class="recent-submissions-section">
+                        <div class="submissions-header">
+                            <h3>Recent Quiz Submissions</h3>
+                            <button class="view-all-btn">View All</button>
+                        </div>
+                        
+                        <div class="submissions-list">
+                            <div class="submission-item">
+                                <div class="submission-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="submission-info">
+                                    <span class="student-name">Sarah Wilson</span>
+                                    <span class="assignment-name">HTML Fundamentals</span>
+                                    <span class="submission-time">1 hour ago</span>
+                                </div>
+                                <div class="submission-status">
+                                    <span class="status-badge graded">Score: 85%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <div class="submission-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="submission-info">
+                                    <span class="student-name">Tom Brown</span>
+                                    <span class="assignment-name">SQL Basics</span>
+                                    <span class="submission-time">3 hours ago</span>
+                                </div>
+                                <div class="submission-status">
+                                    <span class="status-badge graded">Score: 92%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <div class="submission-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="submission-info">
+                                    <span class="student-name">Emily Davis</span>
+                                    <span class="assignment-name">HTML Fundamentals</span>
+                                    <span class="submission-time">6 hours ago</span>
+                                </div>
+                                <div class="submission-status">
+                                    <span class="status-badge pending">Pending Review</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submissions Section -->
+            <section id="submissions" class="content-section">
+                <div class="section-header">
+                    <h2>Submissions</h2>
+                    <p>View and manage student submissions for assignments and quizzes</p>
+                </div>
+                
+                <!-- Filters -->
+                <div class="submissions-filters">
+                    <div class="filter-group">
+                        <label for="subjectFilter">Subject</label>
+                        <select id="subjectFilter" class="filter-select">
+                            <option value="all">All Subjects</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="database-systems">Database Systems</option>
+                            <option value="programming">Programming</option>
+                            <option value="mathematics">Mathematics</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateFilter">Date Range</label>
+                        <select id="dateFilter" class="filter-select">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" id="customDateRange" style="display: none;">
+                        <div class="date-range-inputs">
+                            <input type="date" id="startDate" class="filter-input">
+                            <span>to</span>
+                            <input type="date" id="endDate" class="filter-input">
+                        </div>
+                    </div>
+                    <button class="btn-apply-filter" onclick="applyFilters()">
+                        <i class="fas fa-filter"></i>
+                        Apply Filters
+                    </button>
+                    <button class="btn-clear-filter" onclick="clearFilters()">
+                        <i class="fas fa-times"></i>
+                        Clear
+                    </button>
+                </div>
+                
+                <div class="submissions-content">
+                    <!-- Assignments Section -->
+                    <div class="submission-category">
+                        <div class="category-header">
+                            <h3><i class="fas fa-tasks"></i> Assignments</h3>
+                        </div>
+                        <div class="submission-cards">
+                            <div class="submission-card" onclick="viewAssignmentSubmissions('assignment-1')">
+                                <div class="submission-icon">
+                                    <i class="fas fa-file-code"></i>
+                                </div>
+                                <div class="submission-details">
+                                    <h4>HTML/CSS Portfolio</h4>
+                                    <p>Create a personal portfolio website</p>
+                                    <div class="submission-meta">
+                                        <span class="submission-course">Web Development</span>
+                                        <span class="submission-due">Due: April 20, 2026</span>
+                                    </div>
+                                </div>
+                                <div class="submission-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>12/15 Submitted</span>
+                                    </span>
+                                    <span class="stat-item pending">
+                                        <i class="fas fa-clock"></i>
+                                        <span>3 Pending</span>
+                                    </span>
+                                </div>
+                                <div class="submission-arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="submission-card" onclick="viewAssignmentSubmissions('assignment-2')">
+                                <div class="submission-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="submission-details">
+                                    <h4>Database Schema Design</h4>
+                                    <p>Design a database for e-commerce</p>
+                                    <div class="submission-meta">
+                                        <span class="submission-course">Database Systems</span>
+                                        <span class="submission-due">Due: April 25, 2026</span>
+                                    </div>
+                                </div>
+                                <div class="submission-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>8/15 Submitted</span>
+                                    </span>
+                                    <span class="stat-item pending">
+                                        <i class="fas fa-clock"></i>
+                                        <span>7 Pending</span>
+                                    </span>
+                                </div>
+                                <div class="submission-arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quizzes Section -->
+                    <div class="submission-category">
+                        <div class="category-header">
+                            <h3><i class="fas fa-question-circle"></i> Quizzes</h3>
+                        </div>
+                        <div class="submission-cards">
+                            <div class="submission-card" onclick="viewQuizSubmissions('quiz-1')">
+                                <div class="submission-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="submission-details">
+                                    <h4>HTML Fundamentals</h4>
+                                    <p>Basic HTML concepts and tags</p>
+                                    <div class="submission-meta">
+                                        <span class="submission-course">Web Development</span>
+                                        <span class="submission-due">Due: April 15, 2026</span>
+                                    </div>
+                                </div>
+                                <div class="submission-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>15/15 Completed</span>
+                                    </span>
+                                    <span class="stat-item completed">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>All Submitted</span>
+                                    </span>
+                                </div>
+                                <div class="submission-arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="submission-card" onclick="viewQuizSubmissions('quiz-2')">
+                                <div class="submission-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="submission-details">
+                                    <h4>SQL Basics</h4>
+                                    <p>Introduction to SQL queries</p>
+                                    <div class="submission-meta">
+                                        <span class="submission-course">Database Systems</span>
+                                        <span class="submission-due">Due: April 18, 2026</span>
+                                    </div>
+                                </div>
+                                <div class="submission-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>13/15 Completed</span>
+                                    </span>
+                                    <span class="stat-item pending">
+                                        <i class="fas fa-clock"></i>
+                                        <span>2 Pending</span>
+                                    </span>
+                                </div>
+                                <div class="submission-arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Grades Section -->
+            <section id="grades" class="content-section">
+                <div class="grades-container">
+                    <!-- Grades Header -->
+                    <div class="grades-header">
+                        <h2>Student Grading</h2>
+                        <p>Manage and calculate student grades efficiently</p>
+                    </div>
+
+                    <!-- Filter Controls -->
+                    <div class="grades-controls">
+                        <div class="control-group">
+                            <label for="classSelector">Class/Subject</label>
+                            <select id="classSelector" class="control-select">
+                                <option value="web-dev">Web Development - Section A</option>
+                                <option value="database">Database Systems - Section B</option>
+                                <option value="programming">Programming Fundamentals - Section A</option>
+                                <option value="math">Mathematics - Section C</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="studentSearch">Search Student</label>
+                            <div class="search-input-wrapper">
+                                <input type="text" id="studentSearch" class="control-input" placeholder="Search by name or ID...">
+                                <i class="fas fa-search search-icon"></i>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Filter Options</label>
+                            <div class="filter-options">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" id="showMissing">
+                                    <span>Show Missing Grades</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" id="showTopPerformers">
+                                    <span>Show Top Performers</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" id="showNeedImprovement">
+                                    <span>Need Improvement</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="grades-actions">
+                        <button class="btn-add-column" onclick="addAssessmentColumn()">
+                            <i class="fas fa-plus"></i>
+                            Add Assessment Column
+                        </button>
+                        <button class="btn-save-grades" onclick="saveGrades()">
+                            <i class="fas fa-save"></i>
+                            Save Grades
+                        </button>
+                        <button class="btn-export" onclick="exportGrades()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+
+                    <!-- Grading Table -->
+                    <div class="grades-table-container">
+                        <div class="table-wrapper">
+                            <table class="grades-table" id="gradesTable">
+                                <thead>
+                                    <tr>
+                                        <th class="sticky-header" style="width: 50px;">#</th>
+                                        <th class="sticky-header" style="width: 200px;">Student Name</th>
+                                        <th class="sticky-header" style="width: 120px;">Student ID</th>
+                                        <th class="sticky-header grade-column" data-weight="15">Quiz 1 (15%)</th>
+                                        <th class="sticky-header grade-column" data-weight="15">Quiz 2 (15%)</th>
+                                        <th class="sticky-header grade-column" data-weight="20">Midterm (20%)</th>
+                                        <th class="sticky-header grade-column" data-weight="25">Final Project (25%)</th>
+                                        <th class="sticky-header grade-column" data-weight="25">Participation (25%)</th>
+                                        <th class="sticky-header" style="width: 100px;">Total</th>
+                                        <th class="sticky-header" style="width: 100px;">Average</th>
+                                        <th class="sticky-header" style="width: 80px;">Letter</th>
+                                        <th class="sticky-header" style="width: 150px;">Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gradesTableBody">
+                                    <!-- Student 1 -->
+                                    <tr class="student-row" data-student-id="STU001">
+                                        <td class="row-number">1</td>
+                                        <td class="student-name">John Doe</td>
+                                        <td class="student-id">STU001</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="85">85</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="92">92</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="78">78</td>
+                                        <td class="grade-cell editable" data-assessment="final" data-value="88">88</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="95">95</td>
+                                        <td class="grade-total">87.6</td>
+                                        <td class="grade-average">87.6</td>
+                                        <td class="grade-letter">B+</td>
+                                        <td class="comment-cell editable" contenteditable="true">Good progress</td>
+                                    </tr>
+                                    <!-- Student 2 -->
+                                    <tr class="student-row" data-student-id="STU002">
+                                        <td class="row-number">2</td>
+                                        <td class="student-name">Jane Smith</td>
+                                        <td class="student-id">STU002</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="95">95</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="98">98</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="92">92</td>
+                                        <td class="grade-cell editable" data-assessment="final" data-value="96">96</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="100">100</td>
+                                        <td class="grade-total">96.2</td>
+                                        <td class="grade-average">96.2</td>
+                                        <td class="grade-letter">A</td>
+                                        <td class="comment-cell editable" contenteditable="true">Excellent work</td>
+                                    </tr>
+                                    <!-- Student 3 -->
+                                    <tr class="student-row" data-student-id="STU003">
+                                        <td class="row-number">3</td>
+                                        <td class="student-name">Mike Johnson</td>
+                                        <td class="student-id">STU003</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="72">72</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="68">68</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="75">75</td>
+                                        <td class="grade-cell editable missing" data-assessment="final" data-value="">-</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="80">80</td>
+                                        <td class="grade-total">73.8</td>
+                                        <td class="grade-average">73.8</td>
+                                        <td class="grade-letter">C</td>
+                                        <td class="comment-cell editable" contenteditable="true">Needs improvement</td>
+                                    </tr>
+                                    <!-- Student 4 -->
+                                    <tr class="student-row" data-student-id="STU004">
+                                        <td class="row-number">4</td>
+                                        <td class="student-name">Sarah Wilson</td>
+                                        <td class="student-id">STU004</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="88">88</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="85">85</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="90">90</td>
+                                        <td class="grade-cell editable" data-assessment="final" data-value="92">92</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="88">88</td>
+                                        <td class="grade-total">88.6</td>
+                                        <td class="grade-average">88.6</td>
+                                        <td class="grade-letter">B+</td>
+                                        <td class="comment-cell editable" contenteditable="true">Consistent performance</td>
+                                    </tr>
+                                    <!-- Student 5 -->
+                                    <tr class="student-row" data-student-id="STU005">
+                                        <td class="row-number">5</td>
+                                        <td class="student-name">Tom Brown</td>
+                                        <td class="student-id">STU005</td>
+                                        <td class="grade-cell editable missing" data-assessment="quiz1" data-value="">-</td>
+                                        <td class="grade-cell editable missing" data-assessment="quiz2" data-value="">-</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="65">65</td>
+                                        <td class="grade-cell editable missing" data-assessment="final" data-value="">-</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="70">70</td>
+                                        <td class="grade-total">67.5</td>
+                                        <td class="grade-average">67.5</td>
+                                        <td class="grade-letter">D+</td>
+                                        <td class="comment-cell editable" contenteditable="true">Missing assignments</td>
+                                    </tr>
+                                    <!-- Student 6 -->
+                                    <tr class="student-row" data-student-id="STU006">
+                                        <td class="row-number">6</td>
+                                        <td class="student-name">Emily Davis</td>
+                                        <td class="student-id">STU006</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="90">90</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="88">88</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="85">85</td>
+                                        <td class="grade-cell editable" data-assessment="final" data-value="90">90</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="92">92</td>
+                                        <td class="grade-total">89.0</td>
+                                        <td class="grade-average">89.0</td>
+                                        <td class="grade-letter">A-</td>
+                                        <td class="comment-cell editable" contenteditable="true">Strong effort</td>
+                                    </tr>
+                                    <!-- Student 7 -->
+                                    <tr class="student-row" data-student-id="STU007">
+                                        <td class="row-number">7</td>
+                                        <td class="student-name">Alex Thompson</td>
+                                        <td class="student-id">STU007</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="82">82</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="80">80</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="78">78</td>
+                                        <td class="grade-cell editable" data-assessment="final" data-value="85">85</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="88">88</td>
+                                        <td class="grade-total">82.6</td>
+                                        <td class="grade-average">82.6</td>
+                                        <td class="grade-letter">B</td>
+                                        <td class="comment-cell editable" contenteditable="true">Good participation</td>
+                                    </tr>
+                                    <!-- Student 8 -->
+                                    <tr class="student-row" data-student-id="STU008">
+                                        <td class="row-number">8</td>
+                                        <td class="student-name">Lisa Chen</td>
+                                        <td class="student-id">STU008</td>
+                                        <td class="grade-cell editable" data-assessment="quiz1" data-value="98">98</td>
+                                        <td class="grade-cell editable" data-assessment="quiz2" data-value="95">95</td>
+                                        <td class="grade-cell editable" data-assessment="midterm" data-value="94">94</td>
+                                        <td class="grade-cell editable" data-assessment="final" data-value="97">97</td>
+                                        <td class="grade-cell editable" data-assessment="participation" data-value="98">98</td>
+                                        <td class="grade-total">96.4</td>
+                                        <td class="grade-average">96.4</td>
+                                        <td class="grade-letter">A</td>
+                                        <td class="comment-cell editable" contenteditable="true">Outstanding performance</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <div class="pagination-info">
+                            <span>Showing 1-8 of 8 students</span>
+                        </div>
+                        <div class="pagination-controls">
+                            <button class="pagination-btn" onclick="previousPage()" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="pagination-btn active" onclick="goToPage(1)">1</button>
+                            <button class="pagination-btn" onclick="nextPage()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

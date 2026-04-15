@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Submissions - Teacher Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="window.location.href = 'teacher.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="submissions-detail-content">
+                <!-- Assignment Header -->
+                <div class="assignment-detail-header">
+                    <div class="header-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="header-info">
+                        <h1 id="assignmentTitle">HTML/CSS Portfolio</h1>
+                        <p id="assignmentDescription">Create a personal portfolio website using HTML and CSS</p>
+                        <div class="header-meta">
+                            <span class="meta-item"><i class="fas fa-book"></i> Web Development</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Due: April 20, 2026</span>
+                            <span class="meta-item"><i class="fas fa-star"></i> 100 Points</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submissions Table -->
+                <div class="submissions-table-container">
+                    <div class="table-header">
+                        <h2>Student Submissions</h2>
+                        <div class="table-actions">
+                            <span class="submission-summary">
+                                <span class="summary-item submitted">12 Submitted</span>
+                                <span class="summary-item pending">3 Pending</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table class="submissions-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Student ID</th>
+                                    <th>Submission Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="submitted">
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>STU001</td>
+                                    <td>April 18, 2026 - 3:45 PM</td>
+                                    <td><span class="status-badge submitted">Submitted</span></td>
+                                    <td>
+                                        <button class="btn-view-file" onclick="viewSubmission('john-doe')">
+                                            <i class="fas fa-file-alt"></i>
+                                            View File
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="submitted">
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <span>Jane Smith</span>
+                                        </div>
+                                    </td>
+                                    <td>STU002</td>
+                                    <td>April 19, 2026 - 10:20 AM</td>
+                                    <td><span class="status-badge submitted">Submitted</span></td>
+                                    <td>
+                                        <button class="btn-view-file" onclick="viewSubmission('jane-smith')">
+                                            <i class="fas fa-file-alt"></i>
+                                            View File
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="submitted">
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <span>Mike Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td>STU003</td>
+                                    <td>April 19, 2026 - 2:15 PM</td>
+                                    <td><span class="status-badge submitted">Submitted</span></td>
+                                    <td>
+                                        <button class="btn-view-file" onclick="viewSubmission('mike-johnson')">
+                                            <i class="fas fa-file-alt"></i>
+                                            View File
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <span>Sarah Wilson</span>
+                                        </div>
+                                    </td>
+                                    <td>STU004</td>
+                                    <td>-</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-remind" onclick="sendReminder('sarah-wilson')">
+                                            <i class="fas fa-bell"></i>
+                                            Remind
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <span>Tom Brown</span>
+                                        </div>
+                                    </td>
+                                    <td>STU005</td>
+                                    <td>-</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-remind" onclick="sendReminder('tom-brown')">
+                                            <i class="fas fa-bell"></i>
+                                            Remind
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="submitted">
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <span>Emily Davis</span>
+                                        </div>
+                                    </td>
+                                    <td>STU006</td>
+                                    <td>April 17, 2026 - 5:30 PM</td>
+                                    <td><span class="status-badge submitted">Submitted</span></td>
+                                    <td>
+                                        <button class="btn-view-file" onclick="viewSubmission('emily-davis')">
+                                            <i class="fas fa-file-alt"></i>
+                                            View File
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // View submission file
+        function viewSubmission(studentId) {
+            alert('Opening submission file for ' + studentId + '. In a real application, this would open the actual file.');
+        }
+
+        // Send reminder to student
+        function sendReminder(studentId) {
+            if (confirm('Send reminder to ' + studentId + '?')) {
+                alert('Reminder sent to ' + studentId);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz - ZENITH</title>
+    <link rel="stylesheet" href="teacher.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="goToDashboard()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="create-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1>Create Quiz</h1>
+                    <p>Create a new quiz for your students</p>
+                </div>
+
+                <!-- Quiz Form -->
+                <div class="quiz-form">
+                    <!-- Title Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-heading"></i>
+                            <h2>Quiz Title</h2>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="quizTitle" placeholder="Enter quiz title" class="form-input">
+                        </div>
+                    </div>
+
+                    <!-- Instructions Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h2>Instructions</h2>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="instructions" placeholder="Provide detailed instructions for this quiz..." class="form-textarea" rows="6"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Questions Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-question-circle"></i>
+                            <h2>Quiz Questions</h2>
+                        </div>
+                        <div class="questions-container">
+                            <div class="questions-header">
+                                <span class="questions-count">0 questions added</span>
+                                <button type="button" class="btn-add-question" onclick="addQuestion()">
+                                    <i class="fas fa-plus"></i>
+                                    Add Question
+                                </button>
+                            </div>
+                            <div class="questions-list" id="questionsList">
+                                <!-- Questions will be added here dynamically -->
+                            </div>
+                            <div class="no-questions" id="noQuestions">
+                                <i class="fas fa-question-circle"></i>
+                                <p>No questions added yet. Click "Add Question" to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Points Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-star"></i>
+                            <h2>Points</h2>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="points" placeholder="Enter total points" class="form-input" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Course Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-book"></i>
+                            <h2>Course</h2>
+                        </div>
+                        <div class="form-group">
+                            <select id="course" class="form-select">
+                                <option value="">Select Course</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="database-design">Database Design</option>
+                                <option value="mobile-app">Mobile App Development</option>
+                                <option value="data-structures">Data Structures</option>
+                                <option value="algorithms">Algorithms</option>
+                                <option value="computer-networks">Computer Networks</option>
+                                <option value="operating-systems">Operating Systems</option>
+                                <option value="software-engineering">Software Engineering</option>
+                                <option value="machine-learning">Machine Learning</option>
+                                <option value="artificial-intelligence">Artificial Intelligence</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Due Date and Time Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h2>Due Date & Time</h2>
+                        </div>
+                        <div class="datetime-container">
+                            <div class="datetime-display">
+                                <div class="datetime-preview">
+                                    <i class="fas fa-clock"></i>
+                                    <span id="datetimePreview">No due date set</span>
+                                </div>
+                                <button type="button" class="datetime-clear-btn" onclick="clearDateTime()" id="clearBtn" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="datetime-inputs">
+                                <div class="form-group">
+                                    <label for="dueDate">Select Date</label>
+                                    <div class="date-input-wrapper">
+                                        <input type="date" id="dueDate" class="form-input">
+                                        <i class="fas fa-calendar date-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dueTime">Select Time</label>
+                                    <div class="time-input-wrapper">
+                                        <input type="time" id="dueTime" class="form-input">
+                                        <i class="fas fa-clock time-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Options -->
+                            <div class="quick-options">
+                                <label>Quick Options:</label>
+                                <div class="quick-buttons">
+                                    <button type="button" class="quick-btn" onclick="setQuickDateTime('tomorrow')">
+                                        <i class="fas fa-sun"></i>
+                                        Tomorrow 11:59 PM
+                                    </button>
+                                    <button type="button" class="quick-btn" onclick="setQuickDateTime('week')">
+                                        <i class="fas fa-calendar-week"></i>
+                                        Next Week 11:59 PM
+                                    </button>
+                                    <button type="button" class="quick-btn" onclick="setQuickDateTime('month')">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        Next Month 11:59 PM
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button class="btn-cancel" onclick="goToDashboard()">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button class="btn-save-draft" onclick="saveDraft()">
+                            <i class="fas fa-save"></i>
+                            Save as Draft
+                        </button>
+                        <button class="btn-publish" onclick="publishQuiz()">
+                            <i class="fas fa-paper-plane"></i>
+                            Publish Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="forms.js"></script>
+</body>
+</html>
