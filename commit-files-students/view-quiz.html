@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz - ZENITH</title>
+    <link rel="stylesheet" href="student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="goToDashboard()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content quiz-main">
+            <div class="quiz-container">
+                <!-- Quiz Header -->
+                <div class="quiz-header">
+                    <div class="quiz-title-section">
+                        <h1>HTML Fundamentals</h1>
+                        <p class="quiz-subtitle">Web Development • 20 Questions</p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">20</span></span>
+                        <span id="progressPercent">5%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 5%"></div>
+                    </div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="question-card">
+                    <div class="question-number-badge">Question 1</div>
+                    <div class="question-content">
+                        <h2 class="question-text">What is the correct HTML element for the largest heading?</h2>
+                        
+                        <div class="options-list">
+                            <label class="option-item">
+                                <input type="radio" name="current_answer" value="a">
+                                <span class="option-marker">A</span>
+                                <span class="option-text">&lt;heading&gt;</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="current_answer" value="b">
+                                <span class="option-marker">B</span>
+                                <span class="option-text">&lt;h6&gt;</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="current_answer" value="c">
+                                <span class="option-marker">C</span>
+                                <span class="option-text">&lt;h1&gt;</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="current_answer" value="d">
+                                <span class="option-marker">D</span>
+                                <span class="option-text">&lt;head&gt;</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="quiz-navigation">
+                        <button class="nav-btn prev-btn" onclick="previousQuestion()" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button class="nav-btn next-btn" onclick="nextQuestion()">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="nav-btn submit-btn" onclick="submitQuiz()" style="display: none;">
+                            Submit Quiz
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question Navigation Panel -->
+                <div class="question-panel">
+                    <div class="panel-header">
+                        <h3>Question Navigator</h3>
+                    </div>
+                    <div class="question-grid" id="questionGrid">
+                        <!-- Question numbers will be generated by JS -->
+                    </div>
+                    <div class="panel-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot answered"></span>
+                            <span>Answered</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot current"></span>
+                            <span>Current</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot unanswered"></span>
+                            <span>Unanswered</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="student.js"></script>
+</body>
+</html>

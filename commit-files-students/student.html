@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - ZENITH</title>
+    <link rel="stylesheet" href="student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item active" onclick="showSection('overview')">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item" onclick="showSection('lessons')">
+                    <i class="fas fa-book"></i>
+                    <span>Lessons</span>
+                </div>
+                <div class="nav-item" onclick="showSection('assignments')">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                </div>
+                <div class="nav-item" onclick="showSection('quizzes')">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Quizzes</span>
+                </div>
+                <div class="nav-item" onclick="showSection('grades')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>My Grades</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="section-header">
+                    <h2>Overview</h2>
+                    <p>Welcome back! Here's what's happening with your courses.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon lessons-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Active Lessons</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon assignments-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>5</h3>
+                            <p>Pending Assignments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon quizzes-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2</h3>
+                            <p>Upcoming Quizzes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon grades-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87.5%</h3>
+                            <p>Average Grade</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lessons Overview -->
+                <div class="overview-section">
+                    <div class="overview-header">
+                        <h3>Recent Lessons</h3>
+                        <button class="view-all-btn" onclick="showSection('lessons')">View All</button>
+                    </div>
+                    <div class="lessons-grid">
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Web Development</span>
+                                <span class="lesson-date">Today</span>
+                            </div>
+                            <h4>Introduction to HTML5</h4>
+                            <p>Learn the basics of HTML5 structure and elements.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn">Continue</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Database Systems</span>
+                                <span class="lesson-date">Yesterday</span>
+                            </div>
+                            <h4>SQL Fundamentals</h4>
+                            <p>Understanding basic SQL queries and database operations.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn">Continue</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Programming</span>
+                                <span class="lesson-date">2 days ago</span>
+                            </div>
+                            <h4>JavaScript Basics</h4>
+                            <p>Introduction to JavaScript programming concepts.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn completed">Completed</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignments Overview -->
+                <div class="overview-section">
+                    <div class="overview-header">
+                        <h3>Pending Assignments</h3>
+                        <button class="view-all-btn" onclick="showSection('assignments')">View All</button>
+                    </div>
+                    <div class="assignments-list">
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <div class="assignment-title">
+                                    <h4>Web Development Project</h4>
+                                    <span class="assignment-subject">Web Development</span>
+                                </div>
+                                <div class="assignment-details">
+                                    <span class="assignment-due">Due: April 20, 2026</span>
+                                </div>
+                            </div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <div class="assignment-title">
+                                    <h4>Database Design Document</h4>
+                                    <span class="assignment-subject">Database Systems</span>
+                                </div>
+                                <div class="assignment-details">
+                                    <span class="assignment-due">Due: April 22, 2026</span>
+                                </div>
+                            </div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <div class="assignment-title">
+                                    <h4>Algorithm Analysis</h4>
+                                    <span class="assignment-subject">Programming</span>
+                                </div>
+                                <div class="assignment-details">
+                                    <span class="assignment-due">Due: April 25, 2026</span>
+                                </div>
+                            </div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quizzes Overview -->
+                <div class="overview-section">
+                    <div class="overview-header">
+                        <h3>Upcoming Quizzes</h3>
+                        <button class="view-all-btn" onclick="showSection('quizzes')">View All</button>
+                    </div>
+                    <div class="quizzes-list">
+                        <div class="quiz-item">
+                            <div class="quiz-info">
+                                <div class="quiz-title">
+                                    <h4>HTML5 & CSS3 Quiz</h4>
+                                    <span class="quiz-subject">Web Development</span>
+                                </div>
+                                <div class="quiz-details">
+                                    <span class="quiz-date">April 19, 2026 - 10:00 AM</span>
+                                </div>
+                            </div>
+                            <button class="start-btn">Start Quiz</button>
+                        </div>
+                        <div class="quiz-item">
+                            <div class="quiz-info">
+                                <div class="quiz-title">
+                                    <h4>SQL Query Quiz</h4>
+                                    <span class="quiz-subject">Database Systems</span>
+                                </div>
+                                <div class="quiz-details">
+                                    <span class="quiz-date">April 21, 2026 - 2:00 PM</span>
+                                </div>
+                            </div>
+                            <button class="start-btn">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lessons Section -->
+            <section id="lessons" class="content-section">
+                <div class="section-header">
+                    <h2>Lessons</h2>
+                    <p>Access all your course materials and lessons.</p>
+                </div>
+
+                <div class="lessons-container">
+                    <!-- Subject Selection -->
+                    <div class="subject-selection-top">
+                        <label for="lessonSubjectSelect">Select Subject:</label>
+                        <select id="lessonSubjectSelect" class="subject-dropdown">
+                            <option value="">All Subjects</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Database Design">Database Design</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Data Structures">Data Structures</option>
+                            <option value="Algorithms">Algorithms</option>
+                            <option value="Computer Networks">Computer Networks</option>
+                            <option value="Operating Systems">Operating Systems</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                        </select>
+                    </div>
+
+                    <!-- Lessons Grid -->
+                    <div class="lessons-grid">
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Web Development</span>
+                                <span class="lesson-date">Today</span>
+                            </div>
+                            <h4>Introduction to HTML5</h4>
+                            <p>Learn the basics of HTML5 structure and elements.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Web Development</span>
+                                <span class="lesson-date">Today</span>
+                            </div>
+                            <h4>CSS3 Fundamentals</h4>
+                            <p>Master CSS styling and layout techniques.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Database Design</span>
+                                <span class="lesson-date">Yesterday</span>
+                            </div>
+                            <h4>SQL Fundamentals</h4>
+                            <p>Understanding basic SQL queries and database operations.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Database Design</span>
+                                <span class="lesson-date">Yesterday</span>
+                            </div>
+                            <h4>Database Normalization</h4>
+                            <p>Learn database normalization techniques and best practices.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Programming</span>
+                                <span class="lesson-date">2 days ago</span>
+                            </div>
+                            <h4>JavaScript Basics</h4>
+                            <p>Introduction to JavaScript programming concepts.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn completed">Completed</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Programming</span>
+                                <span class="lesson-date">2 days ago</span>
+                            </div>
+                            <h4>Data Structures</h4>
+                            <p>Understanding arrays, linked lists, and trees.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Algorithms</span>
+                                <span class="lesson-date">3 days ago</span>
+                            </div>
+                            <h4>Sorting Algorithms</h4>
+                            <p>Learn bubble sort, merge sort, and quick sort.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Computer Networks</span>
+                                <span class="lesson-date">4 days ago</span>
+                            </div>
+                            <h4>Network Protocols</h4>
+                            <p>Understanding TCP/IP, HTTP, and other protocols.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                        <div class="lesson-card">
+                            <div class="lesson-header">
+                                <span class="lesson-badge">Software Engineering</span>
+                                <span class="lesson-date">5 days ago</span>
+                            </div>
+                            <h4>Software Development Lifecycle</h4>
+                            <p>Learn about SDLC phases and methodologies.</p>
+                            <div class="lesson-footer">
+                                <button class="continue-btn" onclick="downloadLesson(this)">View Lesson</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Assignments Section -->
+            <section id="assignments" class="content-section">
+                <div class="section-header">
+                    <h2>Assignments</h2>
+                    <p>View and submit your assignments.</p>
+                </div>
+
+                <div class="assignments-container">
+                    <!-- Subject Selection -->
+                    <div class="subject-selection-top">
+                        <label for="assignmentSubjectSelect">Select Subject:</label>
+                        <select id="assignmentSubjectSelect" class="subject-dropdown">
+                            <option value="">All Subjects</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Database Design">Database Design</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Data Structures">Data Structures</option>
+                            <option value="Algorithms">Algorithms</option>
+                            <option value="Computer Networks">Computer Networks</option>
+                            <option value="Operating Systems">Operating Systems</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                        </select>
+                    </div>
+
+                    <!-- Assignments Grid -->
+                    <div class="assignments-grid">
+                        <div class="assignment-card">
+                            <div class="assignment-icon">
+                                <i class="fas fa-file-code"></i>
+                            </div>
+                            <div class="assignment-info">
+                                <h4>HTML/CSS Portfolio</h4>
+                                <p>Create a personal portfolio website</p>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: April 20, 2026</span>
+                                    <span class="assignment-subject">Web Development</span>
+                                </div>
+                            </div>
+                            <div class="assignment-actions">
+                                <button class="submit-btn" onclick="viewAssignment()">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="assignment-card">
+                            <div class="assignment-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="assignment-info">
+                                <h4>Database Schema Design</h4>
+                                <p>Design a database for e-commerce</p>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: April 25, 2026</span>
+                                    <span class="assignment-subject">Database Design</span>
+                                </div>
+                            </div>
+                            <div class="assignment-actions">
+                                <button class="submit-btn" onclick="viewAssignment()">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="assignment-card">
+                            <div class="assignment-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="assignment-info">
+                                <h4>Mobile App Prototype</h4>
+                                <p>Create a mobile app wireframe</p>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: April 28, 2026</span>
+                                    <span class="assignment-subject">Mobile App Development</span>
+                                </div>
+                            </div>
+                            <div class="assignment-actions">
+                                <button class="submit-btn" onclick="viewAssignment()">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="assignment-card">
+                            <div class="assignment-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="assignment-info">
+                                <h4>Linked List Implementation</h4>
+                                <p>Implement a doubly linked list in Python</p>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: May 1, 2026</span>
+                                    <span class="assignment-subject">Data Structures</span>
+                                </div>
+                            </div>
+                            <div class="assignment-actions">
+                                <button class="submit-btn" onclick="viewAssignment()">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="assignment-card">
+                            <div class="assignment-icon">
+                                <i class="fas fa-sort-amount-down"></i>
+                            </div>
+                            <div class="assignment-info">
+                                <h4>Algorithm Analysis</h4>
+                                <p>Analyze time complexity of sorting algorithms</p>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: May 5, 2026</span>
+                                    <span class="assignment-subject">Algorithms</span>
+                                </div>
+                            </div>
+                            <div class="assignment-actions">
+                                <button class="submit-btn" onclick="viewAssignment()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quizzes Section -->
+            <section id="quizzes" class="content-section">
+                <div class="section-header">
+                    <h2>Quizzes</h2>
+                    <p>Take quizzes and view your results.</p>
+                </div>
+
+                <div class="quizzes-container">
+                    <!-- Subject Selection -->
+                    <div class="subject-selection-top">
+                        <label for="quizSubjectSelect">Select Subject:</label>
+                        <select id="quizSubjectSelect" class="subject-dropdown">
+                            <option value="">All Subjects</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Database Design">Database Design</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Data Structures">Data Structures</option>
+                            <option value="Algorithms">Algorithms</option>
+                            <option value="Computer Networks">Computer Networks</option>
+                            <option value="Operating Systems">Operating Systems</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                        </select>
+                    </div>
+
+                    <!-- Quizzes Grid -->
+                    <div class="quizzes-grid">
+                        <div class="quiz-card">
+                            <div class="quiz-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>HTML Fundamentals</h4>
+                                <p>Basic HTML tags and structure</p>
+                                <div class="quiz-meta">
+                                    <span class="quiz-questions">20 questions</span>
+                                    <span class="quiz-duration">30 minutes</span>
+                                    <span class="quiz-subject">Web Development</span>
+                                </div>
+                            </div>
+                            <div class="quiz-actions">
+                                <button class="start-btn" onclick="viewQuiz()">Start Quiz</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-card">
+                            <div class="quiz-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>SQL Basics</h4>
+                                <p>Database queries and operations</p>
+                                <div class="quiz-meta">
+                                    <span class="quiz-questions">15 questions</span>
+                                    <span class="quiz-duration">25 minutes</span>
+                                    <span class="quiz-subject">Database Design</span>
+                                </div>
+                            </div>
+                            <div class="quiz-actions">
+                                <button class="start-btn" onclick="viewQuiz()">Start Quiz</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-card">
+                            <div class="quiz-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>Mobile Development Concepts</h4>
+                                <p>Native vs cross-platform development</p>
+                                <div class="quiz-meta">
+                                    <span class="quiz-questions">18 questions</span>
+                                    <span class="quiz-duration">35 minutes</span>
+                                    <span class="quiz-subject">Mobile App Development</span>
+                                </div>
+                            </div>
+                            <div class="quiz-actions">
+                                <button class="start-btn" onclick="viewQuiz()">Start Quiz</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-card">
+                            <div class="quiz-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>Data Structures Quiz</h4>
+                                <p>Arrays, linked lists, and trees</p>
+                                <div class="quiz-meta">
+                                    <span class="quiz-questions">25 questions</span>
+                                    <span class="quiz-duration">40 minutes</span>
+                                    <span class="quiz-subject">Data Structures</span>
+                                </div>
+                            </div>
+                            <div class="quiz-actions">
+                                <button class="start-btn" onclick="viewQuiz()">Start Quiz</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-card">
+                            <div class="quiz-icon">
+                                <i class="fas fa-sort-amount-down"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>Algorithms Quiz</h4>
+                                <p>Sorting and searching algorithms</p>
+                                <div class="quiz-meta">
+                                    <span class="quiz-questions">22 questions</span>
+                                    <span class="quiz-duration">45 minutes</span>
+                                    <span class="quiz-subject">Algorithms</span>
+                                </div>
+                            </div>
+                            <div class="quiz-actions">
+                                <button class="start-btn" onclick="viewQuiz()">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grades Section -->
+            <section id="grades" class="content-section">
+                <div class="section-header">
+                    <h2>My Grades</h2>
+                    <p>View your academic performance and grades.</p>
+                </div>
+
+                <div class="grades-container">
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Assignments</th>
+                                <th>Quizzes</th>
+                                <th>Midterm</th>
+                                <th>Final</th>
+                                <th>Overall Grade</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Web Development</td>
+                                <td>92%</td>
+                                <td>88%</td>
+                                <td>90%</td>
+                                <td>—</td>
+                                <td class="grade-excellent">90%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                            <tr>
+                                <td>Database Design</td>
+                                <td>85%</td>
+                                <td>82%</td>
+                                <td>87%</td>
+                                <td>—</td>
+                                <td class="grade-good">85%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                            <tr>
+                                <td>Mobile App Development</td>
+                                <td>78%</td>
+                                <td>80%</td>
+                                <td>75%</td>
+                                <td>—</td>
+                                <td class="grade-good">78%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                            <tr>
+                                <td>Data Structures</td>
+                                <td>88%</td>
+                                <td>85%</td>
+                                <td>90%</td>
+                                <td>—</td>
+                                <td class="grade-excellent">88%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                            <tr>
+                                <td>Algorithms</td>
+                                <td>72%</td>
+                                <td>75%</td>
+                                <td>70%</td>
+                                <td>—</td>
+                                <td class="grade-good">72%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                            <tr>
+                                <td>Computer Networks</td>
+                                <td>68%</td>
+                                <td>70%</td>
+                                <td>65%</td>
+                                <td>—</td>
+                                <td class="grade-average">68%</td>
+                                <td class="status-warning">Warning</td>
+                            </tr>
+                            <tr>
+                                <td>Operating Systems</td>
+                                <td>75%</td>
+                                <td>78%</td>
+                                <td>72%</td>
+                                <td>—</td>
+                                <td class="grade-good">75%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                            <tr>
+                                <td>Software Engineering</td>
+                                <td>82%</td>
+                                <td>85%</td>
+                                <td>80%</td>
+                                <td>—</td>
+                                <td class="grade-good">82%</td>
+                                <td class="status-passing">Passing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="student.js"></script>
+</body>
+</html>

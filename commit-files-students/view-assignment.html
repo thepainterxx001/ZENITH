@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assignment - ZENITH</title>
+    <link rel="stylesheet" href="student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <h2>ZENITH</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-comment"></i>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="goToDashboard()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </div>
+            </nav>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="view-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1>View Assignment</h1>
+                    <p>Review assignment details and submit your work</p>
+                </div>
+
+                <!-- Assignment Details -->
+                <div class="assignment-view-form">
+                    <!-- Title Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-heading"></i>
+                            <h2>Assignment Title</h2>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-display">HTML/CSS Portfolio</div>
+                        </div>
+                    </div>
+
+                    <!-- Instructions Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h2>Instructions</h2>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-display form-textarea-display">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Questions Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-question-circle"></i>
+                            <h2>Assignment Questions</h2>
+                        </div>
+                        <div class="questions-container">
+                            <div class="questions-list">
+                                <div class="question-item">
+                                    <div class="question-header">
+                                        <span class="question-number">Question 1</span>
+                                        <span class="question-points">10 points</span>
+                                    </div>
+                                    <div class="question-text">
+                                        What HTML5 semantic elements are you using in your portfolio and why?
+                                    </div>
+                                </div>
+                                <div class="question-item">
+                                    <div class="question-header">
+                                        <span class="question-number">Question 2</span>
+                                        <span class="question-points">10 points</span>
+                                    </div>
+                                    <div class="question-text">
+                                        Describe the CSS layout technique you used for your portfolio.
+                                    </div>
+                                </div>
+                                <div class="question-item">
+                                    <div class="question-header">
+                                        <span class="question-number">Question 3</span>
+                                        <span class="question-points">10 points</span>
+                                    </div>
+                                    <div class="question-text">
+                                        How did you ensure your portfolio is responsive?
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Points Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-star"></i>
+                            <h2>Total Points</h2>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-display">30 points</div>
+                        </div>
+                    </div>
+
+                    <!-- Course Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-book"></i>
+                            <h2>Course</h2>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-display">Web Development</div>
+                        </div>
+                    </div>
+
+                    <!-- Due Date and Time Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h2>Due Date & Time</h2>
+                        </div>
+                        <div class="datetime-container">
+                            <div class="datetime-display">
+                                <div class="datetime-preview">
+                                    <i class="fas fa-clock"></i>
+                                    <span>April 20, 2026 - 11:59 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Attachment Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-paperclip"></i>
+                            <h2>Attached Files</h2>
+                        </div>
+                        <div class="form-group">
+                            <div class="file-attachment-list">
+                                <div class="file-attachment-item">
+                                    <div class="file-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="file-info">
+                                        <span class="file-name">portfolio_requirements.pdf</span>
+                                        <span class="file-size">2.4 MB</span>
+                                    </div>
+                                    <button class="download-btn" onclick="downloadFile('portfolio_requirements.pdf')">
+                                        <i class="fas fa-download"></i>
+                                        Download
+                                    </button>
+                                </div>
+                                <div class="file-attachment-item">
+                                    <div class="file-icon">
+                                        <i class="fas fa-file-word"></i>
+                                    </div>
+                                    <div class="file-info">
+                                        <span class="file-name">grading_rubric.docx</span>
+                                        <span class="file-size">1.1 MB</span>
+                                    </div>
+                                    <button class="download-btn" onclick="downloadFile('grading_rubric.docx')">
+                                        <i class="fas fa-download"></i>
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submission Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-upload"></i>
+                            <h2>Submit Your Work</h2>
+                        </div>
+                        <div class="form-group">
+                            <div class="upload-area" id="submissionUploadArea">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h4>Drag & Drop your files here</h4>
+                                    <p>or click to browse</p>
+                                    <span class="file-types">Supported formats: ZIP, PDF, DOCX</span>
+                                </div>
+                            </div>
+                            <div class="uploaded-files-list" id="uploadedFilesList">
+                                <!-- Uploaded files will appear here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button class="btn-cancel" onclick="goToDashboard()">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button class="btn-submit" onclick="submitAssignment()">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Assignment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="student.js"></script>
+</body>
+</html>
